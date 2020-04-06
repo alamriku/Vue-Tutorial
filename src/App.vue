@@ -1,47 +1,48 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-              <button @click="selectedComponent='appQuote'">Quote</button>
-              <button @click="selectedComponent='appAuthor'">Author</button>
-              <button @click="selectedComponent='appNew'">New</button>
-              <p>{{selectedComponent}}</p>
-              <hr>
-              <keep-alive>
-                <component :is="selectedComponent"></component>
-              </keep-alive>
-
-<!--            <app-Quote>-->
-<!--              <h1 slot="title">{{quoteTitle}}</h1>-->
-<!--              <span slot="subtitle">{{subtitle}}</span>-->
-<!--              <p slot="content">A wonderful Quote</p>-->
-<!--            </app-Quote>-->
-            </div>
+      <app-header :quote-count="quotes.length" :max-quote="maxQuotes"></app-header>
+      <app-new-quote @quoteAdded="newQuote($event)" ></app-new-quote>
+      <app-quote-grid :quotes="quotes" @quoteDeleted ="deleteQuote"></app-quote-grid>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <div class="alert alert-info">Info:Click on a Quote to Delete it!</div>
         </div>
+      </div>
     </div>
 </template>
 
 <script>
-import Quote from './components/Quote'
-import Author from './components/Author'
-import New from './components/New'
+import QuoteGrid from './components/QuoteGrid'
+import NewQuote from './components/NewQuote'
+import Header from './components/Header'
 export default {
   data: function () {
     return {
-      quoteTitle: 'The Quote from dynamic data',
-      subtitle: 'the second subtitle',
-      selectedComponent: 'appQuote'
+      maxQuotes: 10,
+      quotes: [
+        'just a quote to see something'
+      ]
+    }
+  },
+  methods: {
+    newQuote (quote) {
+      if (this.quotes.length >= this.maxQuotes) {
+        return alert('Please delete Quotes first')
+      }
+      this.quotes.push(quote)
+    },
+    deleteQuote (index) {
+      alert(index)
+      this.quotes.splice(index, 1)
     }
   },
   components: {
-    appQuote: Quote,
-    appAuthor: Author,
-    appNew: New
-
+    appQuoteGrid: QuoteGrid,
+    appNewQuote: NewQuote,
+    appHeader: Header
   }
 }
 </script>
 
-<style scoped>
-
+<style>
 </style>

@@ -1,11 +1,10 @@
 <template>
-  <div class="bg-warning">
-  <div class="title">
-    <slot name="title"></slot>
-    <span style="color: #cccccc"><slot name="subtitle">The Subtitle</slot></span>
-  </div>
-    <hr>
-    <slot name="content"></slot>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="panel panel-default">
+      <div class="panel-body quote">
+        <slot></slot>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,19 +13,16 @@
 </script>
 
 <style scoped>
-div{
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 2px 2px black;
-  padding: 30px;
-  margin: 30px auto;
-  text-align: center;
-}
-h1{
-  color: red;
-}
-  .title{
-    font-family: "Rage Italic";
-    font-palette: dark;
-    font-style: italic;
+  .panel-body{
+    font-family: 'Tangerine',cursive;
+    font-size: 50px;
+    color:#bebebe;
+  }
+  .quote{
+    cursor: pointer;
+    color:#330d0d;
+  }
+  .quote:hover{
+    background-color:#ffe2e2;
   }
 </style>
