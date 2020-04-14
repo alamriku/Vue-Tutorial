@@ -4,12 +4,28 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
               <h1>Animation</h1>
               <hr>
+              <select name="" id="" class="form-control" v-model="alertAnimation">
+                <option value="slide">Slide</option>
+                <option value="fade">Fade</option>
+              </select>
               <button class="btn btn-primary" @click="show = !show">Show alert</button>
-              <transition name="fade">
+              <transition :name="alertAnimation">
                 <div class="alert alert-info" v-if="show">This is some info</div>
               </transition>
-              <transition name="slide" type="animation">
+              <transition :name="alertAnimation" type="animation">
                 <div class="alert alert-info" v-if="show">This is some info</div>
+              </transition>
+              <transition
+
+                enter-active-class="animated bounce"
+
+                leave-active-class="animated shake"
+              >
+                <div class="alert alert-info" v-if="show">This is some info</div>
+              </transition>
+              <transition :name="alertAnimation" mode="out-in" >
+                <div class="alert alert-info" v-if="show" key="info">This is some info</div>
+                <div class="alert alert-warning" v-else key="warning">This is some Warning</div>
               </transition>
             </div>
 
@@ -23,7 +39,8 @@
 export default {
   data () {
     return {
-      show: false
+      show: true,
+      alertAnimation: 'fade'
     }
   }
 }
@@ -34,7 +51,7 @@ export default {
   opacity: 0;
 }
   .fade-enter-active{
-    transition: opacity 1s;
+    transition: opacity 1.5s ease-in-out;
   }
   .fade-leave{
     /*opacity: 1s;*/
