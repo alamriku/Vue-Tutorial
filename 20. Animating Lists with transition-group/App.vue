@@ -186,8 +186,7 @@ animation: slide-in 1s ease-out forwards;
   animation: slide-out 1s ease-out forwards;
   transition: opacity 3s;
   opacity: 0;
-  /*this position is very important to show the remove item from ul*/
-  position:absolute;
+  position:absolute;//this position is very important to show the remove item from ul
 }
 
 .slide-move{
