@@ -5,7 +5,7 @@
     <router-link
       tag="button"
       class="btn btn-secondary"
-      :to="'/user/'+$route.params.id+'/edit'"
+      :to="{name:'userEdit',params:{ id:$route.params.id } }"
     >Edit User</router-link>
   </div>
 </template>
