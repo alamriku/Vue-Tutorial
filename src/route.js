@@ -1,9 +1,29 @@
-import User from './components/user/User'
+
 import Home from './components/Home'
 import Header from './components/Header'
-import UserStart from './components/user/UserStart'
-import UserDetail from './components/user/UserDetail'
-import UserEdit from './components/user/UserEdit'
+
+const User = resolve => {
+  require.ensure(['./components/user/User'], () => {
+    resolve(require('./components/user/User'))
+  }, 'user')
+}
+
+const UserDetail = resolve => {
+  require.ensure(['./components/user/UserDetail'], () => {
+    resolve(require('./components/user/UserDetail'))
+  }, 'user')
+}
+
+const UserStart = resolve => {
+  require.ensure(['./components/user/UserStart'], () => {
+    resolve(require('./components/user/UserStart'))
+  }, 'user')
+}
+const UserEdit = resolve => {
+  require.ensure(['./components/user/UserEdit'], () => {
+    resolve(require('./components/user/UserEdit'))
+  }, 'user')
+}
 export const routes = [
 // if it is domain ' ' then home is used
   {
