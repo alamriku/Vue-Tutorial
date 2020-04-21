@@ -22,6 +22,11 @@ const router = new VueRouter({
     }
   }
 })
+
+router.beforeEach((to, from, next) => {
+  console.log('global beforeach')
+  next()
+})
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',

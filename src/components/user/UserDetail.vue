@@ -24,6 +24,21 @@ export default {
         hash: '#data'
       }
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    // if authenticate
+    // eslint-disable-next-line no-constant-condition
+    // if (false) {
+    //   next()
+    // } else {
+    //   next(false)
+    // }
+    // eslint-disable-next-line no-constant-condition
+    if (true) {
+      next()
+    } else {
+      next(false)
+    }
   }
 }
 </script>
