@@ -6,11 +6,13 @@ import {routes} from './route'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
   router,
+
   render: h => h(App)
 })
