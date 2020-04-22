@@ -37,6 +37,9 @@ export const store = new Vuex.Store({
     },
     decrement: (state, payload) => {
       state.counter -= payload
+    },
+    updateValue: (state, payload) => {
+      state.value = payload
     }
 
   },
@@ -57,6 +60,9 @@ export const store = new Vuex.Store({
       setTimeout(() => {
         commit('decrement', payload.by)
       }, payload.duration)
+    },
+    updateValue ({commit}, payload) {
+      commit('updateValue', payload)
     }
   }
 })
